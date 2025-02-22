@@ -1,4 +1,4 @@
-//#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include "traffic_simulation.h"
