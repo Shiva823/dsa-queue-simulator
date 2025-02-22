@@ -26,7 +26,7 @@
  */
 
 
-//#ifndef SDL_h_
+#ifndef SDL_h_
 #define SDL_h_
 
 #include "SDL_main.h"
