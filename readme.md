@@ -1,6 +1,7 @@
 # Traffic Junction Simulation
 
 This project simulates traffic movement at an intersection using C. The simulation models vehicle movement, traffic signals, and congestion patterns.
+
 ![Traffic Simulation Demo](demo.gif)
 
 ## Prerequisites
