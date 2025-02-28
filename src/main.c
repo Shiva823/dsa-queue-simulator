@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -7,10 +8,8 @@ void initializeSDL(SDL_Window **window, SDL_Renderer **renderer) {
     SDL_Init(SDL_INIT_VIDEO);
     *window = SDL_CreateWindow("Traffic Simulation", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
     *renderer = SDL_CreateRenderer(*window, -1, SDL_RENDERER_ACCELERATED);
-    SDL_SetRenderDrawColor(*renderer, 173, 216, 230, 255); // Light blue
- 
+    SDL_SetRenderDrawColor(*renderer, 255, 255, 255, 255); // Set background color to white
 }
-
 
 void cleanupSDL(SDL_Window *window, SDL_Renderer *renderer) {
     SDL_DestroyRenderer(renderer);
@@ -135,7 +134,6 @@ int main(int argc, char *argv[]) {
 
         SDL_Delay(16); // Cap at ~60 FPS
     }
-    //cleaning up window and renderer frr
 
     cleanupSDL(window, renderer);
     return 0;

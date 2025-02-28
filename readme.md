@@ -1,128 +1,97 @@
-# 🚦 Traffic Queue Simulator
+# **Traffic Simulator 🚦**
 
-A real-time traffic simulation showcasing queue data structures & traffic management. Includes multiple vehicle types, traffic lights, and priority-based queue handling.
+A real-time traffic simulation system for managing and optimizing road traffic flow.
 
-![Traffic Simulation Demo](demo.gif)
+## **Overview**
 
-## ✨ Features
+Traffic Simulator is a C-based application that simulates a real-world traffic system by generating vehicles on different roads and lanes. It processes and clears traffic using an intelligent queue-based approach to prioritize high-traffic areas.
 
-- 🏎️ Real-time 4-way intersection simulation
-- 🚓🚑🚒 Multiple vehicle types with priority handling
-- 🚦 Dynamic traffic light system
-- 🔄 Vehicles can turn left, right, or go straight
-- 🎯 Queue-based traffic management
+This project aims to model dynamic traffic behavior and optimize vehicle movement by implementing priority-based traffic management.
+## **Key Features**
 
-## ⚙️ Prerequisites
+- 🚗 **Real-Time Traffic Generation**: Simulates vehicle arrivals dynamically.
+- 📊 **Queue-Based Traffic Processing**: Implements queue structures for managing lanes.
+- ⚠️ **Priority-Based Traffic Flow**: Roads with high congestion get priority clearance.
+- 🕒 **Automated Traffic Updates**: Continuously updates traffic data every 5 seconds.
+- 🔄 **Crossroad Traffic Handling**: Simulates multiple intersecting roads.
 
-You'll need:
-- 🖥️ GCC/G++ compiler
-- 🎮 SDL2 library
-- 🏗️ MinGW (for Windows)
+## **How It Works**
 
-### 🛠 Installing SDL2
+### **Vehicle Generation**
 
-#### Windows Users:
-1. 🔗 [Download SDL2](https://www.libsdl.org/download-2.0.php)
-2. 📂 Extract contents to your project directory
-3. 🏗 Create folders if missing:
-   - `include/` (for headers)
-   - `lib/` (for library files)
-   - `bin/` (for output)
+- Vehicles are generated randomly for different lanes on 4 roads.
+- Data is stored in text files (`lanea.txt`, `laneb.txt`, etc.).
 
-## 📂 Project Structure
+### **Traffic Processing**
 
-```
-DSA-Queue-Simulator/
-├── include/          # Header files
-├── lib/              # Library files
-├── src/              # Source files
-├── bin/              # Executables
-└── README.md
-```
+- Reads vehicle data from files and stores it in queue structures.
+- Roads with excessive traffic (above a set threshold) are given priority clearance.
+- Normal cycle alternates between different roads if no priority case exists.
 
-## 🏗️ Building the Project
+### **Continuous Simulation**
 
-1. Clone the repo:
-```bash
-git clone https://github.com/zen4FR/dsa-queue-simulator.git
-cd DSA-Queue-Simulator
-```
+- Runs in an infinite loop with periodic updates.
+- Clears vehicles from lanes based on defined rules.
 
-2. Compile:
-```bash
-g++ -Iinclude -Llib -o bin/main.exe src/main.c src/traffic_simulation.c -lmingw32 -lSDL2main -lSDL2
-```
+## **Requirements**
+
+- 🖥️ **OS**: Windows/Linux (Windows uses `Sleep()`, Linux uses `sleep()`).
+- 💾 **Memory**: 2GB RAM (Minimum), 4GB+ (Recommended).
+- 📜 **Compiler**: GCC (MinGW for Windows, GCC for Linux/Mac).
+
+## **Installation & Usage**
+
+### **Clone the Repository**
 
 ```bash
-g++ -o bin/generator src/generator.c src/traffic_simulation.c -lSDL2 -Iinclude -Llib -lmingw32 -lSDL2main -lSDL2
+git clone https://github.com/yourusername/traffic-simulator.git
 ```
+This will download the project files into a folder.
 
-## ▶️ Running the Simulation
+### **Navigate to the Project Folder**
 
-1. Start the vehicle generator:
+Navigate to the Project Folder
 ```bash
-./bin/generator
+cd traffic-simulator
 ```
-2. In another terminal, start the main simulation:
+### **Compile and Run**
+For Windows:
 ```bash
-./bin/main
+gcc traffic_simulator.c -o simulator.exe
+simulator.exe
 ```
-3. 🚗 Watch vehicles navigate the intersection!
-4. ❌ Click the close button (X) to exit.
-
-## 🚙 Vehicle Types
-- 🔵 Regular cars
-- 🔴 Ambulances
-- 🔷 Police cars
-- 🟠 Fire trucks
-
-## 🏁 Traffic Management
-
-- 🚦 **Queue System:** Each lane manages its own queue.
-- 🚨 **Priority Handling:** Emergency vehicles go first.
-- 🔄 **Traffic Light Cycles:** Automated red/green transitions.
-- 🔁 **Turn Management:** Vehicles can turn left, right, or go straight.
-
-## 📜 Code Highlights
-
-### Queue Data Structure
-```c
-typedef struct Node {
-    Vehicle vehicle;
-    struct Node* next;
-} Node;
-
-typedef struct {
-    Node* front;
-    Node* rear;
-    int size;
-} Queue;
+For Linux/Mac:
+```bash
+gcc traffic_simulator.c -o simulator
+./simulator
 ```
-
-### Vehicle States
-```c
-typedef enum {
-    STATE_MOVING,
-    STATE_STOPPING,
-    STATE_STOPPED,
-    STATE_TURNING
-} VehicleState;
+To Run the Vehicle Generator (Optional but Recommended)
+```bash
+gcc vehicle_generator.c -o generator
+./generator
 ```
+### **Process to Run the Program**
+1.Run simulator.exe (Windows) or ./simulator (Linux/Mac) to start the traffic simulation.
 
-## 🤝 Contributing
+2.Optionally, run generator.exe (Windows) or ./generator (Linux/Mac) to dynamically update vehicle data.
 
-1. 🍴 Fork the repo
-2. 🌿 Create a branch (`git checkout -b feature/AmazingFeature`)
-3. 💾 Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. 🚀 Push (`git push origin feature/AmazingFeature`)
-5. 🔥 Open a Pull Request
+3.Observe real-time traffic updates and priority-based vehicle clearance.
 
-## 📚 References
-- 📖 [SDL2 Documentation](https://wiki.libsdl.org/)
-- 📘 CLRS: Queue Data Structures
-- 🚗 Highway Capacity Manual (Traffic Flow Theory)
+4.Press CTRL + C to stop execution.
 
-## 🙌 Acknowledgments
-- ❤️ SDL2 Dev Team
-- 🔬 Traffic Simulation Research Community
-- 🎯 Contributors & Testers
+### **Demo (GIF/Video)**
+
+
+For a full demonstration, check out this video.
+
+### **References**
+Queue-based traffic management: GeeksforGeeks
+
+Traffic simulation concepts: Research Paper on Traffic Flow
+
+C Programming for File Handling: Tutorial
+
+### **Contributions**
+Contributions are welcome! Fork the repository, make changes, and submit a pull request.
+
+Happy coding! 🚦🚗
